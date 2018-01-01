@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Picture Information Viewer</title>
+    <link href="../node_modules/milligram/dist/milligram.min.css" rel="stylesheet">
+    <style type="text/css">
+      body { font-size: 12px; }
+      img { width: auto; height: auto; max-width: 100%; max-height: 100% }
+    </style>
+    <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+  </head>
+  <body>
+    <h2>Picture Information Viewer</h2>
+    <div id="pictures-dir" class="button button-outline">写真格納フォルダの選択</div>
+    <div id="pictures-list" class="container"></div>
+    <script src="../renderer/model/choose-pictures-folder.js"></script>
+  </body>
+</html>
