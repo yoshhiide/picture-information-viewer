@@ -6,15 +6,19 @@
     <link href="../node_modules/milligram/dist/milligram.min.css" rel="stylesheet">
     <style type="text/css">
       body { font-size: 12px; }
+      .top { position: fixed; width: 100%; top: 0; height: 120px; background: white; z-index: 99; }
+      .list { margin-top: 120px; }
       img { width: auto; height: auto; max-width: 100%; max-height: 100% }
     </style>
     <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
     <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
   </head>
   <body>
-    <h2>Picture Information Viewer</h2>
-    <div id="pictures-dir" class="button button-outline">写真格納フォルダの選択</div>
-    <div id="pictures-list" class="container"></div>
+    <div class="top">
+      <h2>Picture Information Viewer</h2>
+      <div id="pictures-dir" class="button button-outline">写真格納フォルダの選択</div>
+    </div>
+    <div id="pictures-list" class="container list"></div>
     <script src="../renderer/model/dom-content-loaded.js"></script>
   </body>
 </html>
