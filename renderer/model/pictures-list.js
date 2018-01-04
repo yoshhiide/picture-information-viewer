@@ -27,7 +27,7 @@ class PicturesList {
 
     const image = document.createElement('img');
     image.classList.add('picture-image');
-    image.setAttribute('src', filePath);
+    image.setAttribute('data-normal', filePath);
     imageCol.appendChild(image);
 
     const cameraInfo = document.createElement('div');
