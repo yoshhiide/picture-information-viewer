@@ -3,6 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const Exif = require('exif').ExifImage;
+const Fraction = require('fraction.js');
 
 
 const readdirAsync = (dirName) => new Promise((resolve, reject) => {
@@ -41,8 +42,8 @@ const showCameraInfo = (info) => {
     info.exif.FNumber,
     '／',
     // 露出時間
-    Math.floor(info.exif.ExposureTime * 100000) / 100,
-    'ms／',
+    (new Fraction(info.exif.ExposureTime)).toFraction(true),
+    's／',
     // ISO
     'ISO ',
     info.exif.ISO
