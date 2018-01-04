@@ -42,6 +42,9 @@ class PicturesDir {
           exifData,
           fileNum: idx,
         });
+
+        // 遅延ロード
+        setTimeout(() => layzr.update().check().handlers(true), 300);
       });
     });
 
