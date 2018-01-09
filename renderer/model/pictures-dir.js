@@ -43,14 +43,41 @@ class PicturesDir {
           fileNum: idx,
         });
 
-        // 遅延ロード
-        setTimeout(() => layzr.update().check().handlers(true), 300);
+        setTimeout(() => {
+          // 遅延ロード
+          this.updateLayzr();
+
+          // リストテーブル化
+          this.toList();
+        }, 300);
       });
     });
 
     ipcRenderer.on('PICTURE-DIR:REPLY:ERROR', (event, err) => {
       console.log('ipcReply error.');
     });
+  }
+
+  // 遅延ロード
+  updateLayzr() {
+    layzr.update().check().handlers(true);
+  }
+
+  // リストテーブル化
+  toList() {
+    if (!list) {
+      list = new List('pictures', {
+        valueNames: [
+          'picture-file-name',
+          'picture-exif',
+        ]
+      }, []);
+
+      // 検索後、画像表示
+      list.on('searchComplete', () => layzr.update().check().handlers(true));
+    } else {
+      list.update();
+    }
   }
 }
 
