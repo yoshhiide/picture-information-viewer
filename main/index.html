@@ -7,7 +7,8 @@
     <style type="text/css">
       body { font-size: 12px; }
       .top { position: fixed; width: 100%; top: 0; height: 120px; background: white; z-index: 99; }
-      .list { margin-top: 120px; }
+      .search-form { position: fixed; width: 100%; top: 0; height: 80px; background: white; z-index: 99; margin-top: 120px; }
+      .list { margin-top: 200px; }
       img { width: auto; height: auto; max-width: 100%; max-height: 100% }
     </style>
     <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
@@ -18,7 +19,13 @@
       <h2>Picture Information Viewer</h2>
       <div id="pictures-dir" class="button button-outline">写真格納フォルダの選択</div>
     </div>
-    <div id="pictures-list" class="container list"></div>
+    <div id="pictures">
+      <div class="search-form">
+        <label for="searchForm">SearchForm</label>
+        <input type="text" class="search" placeholder="Search keyword" id="searchForm"/>
+      </div>
+      <div id="pictures-list" class="container list"></div>
+    </div>
     <script src="../renderer/model/dom-content-loaded.js"></script>
   </body>
 </html>
