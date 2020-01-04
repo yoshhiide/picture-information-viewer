@@ -5,7 +5,7 @@
   "main": "main/index.js",
   "scripts": {
     "start": "electron ./",
-    "build": "electron-packager . picInfoViewer --platform=darwin --arch=x64 --electron-version=4.1.1 --icon=Icon.icns"
+    "build": "electron-packager . picInfoViewer --platform=darwin --arch=x64 --electron-version=4.1.1 --icon=Icon.icns --overwrite"
   },
   "keywords": [],
   "author": "",

@@ -16,10 +16,7 @@ const readdirAsync = (dirName) => new Promise((resolve, reject) => {
 const exif = (filePath) => {
   return new Promise((resolve, reject) => {
     new Exif({ image: filePath }, (err, exifData) => {
-      if (err) {
-        return reject(err);
-      }
-
+      if (err) return resolve();
       resolve(exifData);
     });
   });
@@ -54,11 +51,14 @@ const showCameraInfo = (info) => {
 
 const showExif = ({ fileName, dirName }) => {
   return exif(path.resolve(dirName, fileName))
-    .then(info => ({
-      fileName,
-      exifData: showCameraInfo(info),
-      filePath: path.resolve(dirName, fileName)
-    }));
+    .then(info => {
+      if (!info) return;
+      return {
+        fileName,
+        exifData: showCameraInfo(info),
+        filePath: path.resolve(dirName, fileName)
+      };
+    });
 };
 
 
@@ -68,8 +68,9 @@ const showExif = ({ fileName, dirName }) => {
  */
 module.exports = (dirName) => {
   return readdirAsync(dirName)
-    .then(list => list.filter(fileName => /\.JPG$/i.test(fileName)))
+    .then(list => list.filter(fileName => /\.JPG$|\.JPEG$/i.test(fileName)))
     .then(list => Promise.all(list.map(fileName => showExif({ fileName, dirName }))))
+    .then(list => list.filter(x => x))
     .catch(err => {
       console.error(err);
       return Promise.reject(err);

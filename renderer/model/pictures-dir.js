@@ -54,7 +54,7 @@ class PicturesDir {
     });
 
     ipcRenderer.on('PICTURE-DIR:REPLY:ERROR', (event, err) => {
-      console.log('ipcReply error.');
+      console.log('ipcReply error:', event, err);
     });
   }
 
