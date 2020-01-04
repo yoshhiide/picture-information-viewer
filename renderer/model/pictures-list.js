@@ -65,7 +65,7 @@ class PicturesList {
   informationOnClick(selector, filePath) {
     selector.addEventListener('click', () => {
       // clipboard copy
-      clipboard.writeText(selector.closest('.row').querySelector('.picture-exif').textContent);
+      clipboard.writeText(selector.closest('.row').querySelector('.picture-exif').innerHTML.replace(/<br>/g, '\n'));
 
       // sweetalert2
       swal({

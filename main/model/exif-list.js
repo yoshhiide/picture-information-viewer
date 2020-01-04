@@ -25,29 +25,31 @@ const exif = (filePath) => {
   });
 };
 
+// "20xx:01:01 10:11:30"形式 → "20xx/01/01 10:11"
+const formatDatetime = (exifDate) => {
+  return exifDate
+    .replace(':', '/')
+    .replace(':', '/')
+    .slice(0, -3);//末尾3文字を削除
+};
+
 const showCameraInfo = (info) => {
   return [
+    // Original Datetime
+    formatDatetime(info.exif.DateTimeOriginal),
     // Camera info
     info.image.Model,
-    '／',
     // Lens info
     info.exif.LensModel,
-    '／',
     // FocalLength
-    info.exif.FocalLength,
-    'mm',
-    '／',
+    `${ info.exif.FocalLength }mm`,
     // F
-    'F',
-    info.exif.FNumber,
-    '／',
+    `F${ info.exif.FNumber }`,
     // 露出時間
-    (new Fraction(info.exif.ExposureTime)).toFraction(true),
-    's／',
+    (new Fraction(info.exif.ExposureTime)).toFraction(true) + 'sec',
     // ISO
-    'ISO ',
-    info.exif.ISO
-  ].join('');
+    `ISO ${ info.exif.ISO }`,
+  ].join('\n');
 };
 
 const showExif = ({ fileName, dirName }) => {
