@@ -1,18 +1,17 @@
 {
   "name": "picture-information-viewer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "main/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./",
-    "build": "electron-packager . picInfoViewer --platform=darwin --arch=x64 --version=1.8.4"
+    "build": "electron-packager . picInfoViewer --platform=darwin --arch=x64 --electron-version=4.1.1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.8.4"
+    "electron": ">=1.8.8"
   },
   "dependencies": {
     "exif": "^0.6.0",
